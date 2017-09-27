@@ -11,7 +11,7 @@ example with nginx + php7.1-fpm
     docker network create demo_meetup
     
     
-### Star PHP container :
+### Start PHP container :
 
     docker run -d \
         --name php \
@@ -24,11 +24,10 @@ example with nginx + php7.1-fpm
 
     docker run -d \
         --name web \
-        -p ${NGINX_PORT}:80 \
-        -p ${NGINX_HTTPS_PORT}:443 \
+        -p 8080:80 \
         -v $PWD:/home/docker \
         -v $PWD/nginx.conf:/etc/nginx/conf.d/default.conf \
-        --network ${NETWORKS} \
+        --network demo_meetup \
         nginx
 
 ### Visit [http://localhost:8080](http://localhost:8080)
